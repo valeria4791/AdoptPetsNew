@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:form class="add-background" enctype="multipart/form-data">
+			<div class="container add-container">
+				<h4 class="center">הוסף חיה חדשה</h4>
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+					<h:outputLabel for="name" value="שם חיית מחמד:" class="find-lable" />
+					<h:inputText id="name" type="text" value="#{petMB.petName}"
+						class="add-select" />
+
+					<h:outputLabel for="types" value="סוג:" class="find-lable" />
+					<h:selectOneMenu id="types" class="add-select"
+						value="#{petMB.petType}">
+						<f:selectItem itemValue="1" itemLabel="כלב" />
+						<f:selectItem itemValue="2" itemLabel="חתול" />
+						<f:selectItem itemValue="3" itemLabel="דג" />
+						<f:selectItem itemValue="4" itemLabel="מכרסם" />
+						<f:selectItem itemValue="4" itemLabel="ציפור" />
+					</h:selectOneMenu>
+
+					<h:outputLabel for="age" value="גיל:" class="find-lable" />
+					<h:selectOneMenu id="age" effect="fold" style="width:150px"
+						class="add-select" value="#{petMB.petAge}">
+						<f:selectItem itemValue="1" itemLabel="תינוק" />
+						<f:selectItem itemValue="2" itemLabel="צעיר" />
+						<f:selectItem itemValue="3" itemLabel="מבוגר" />
+						<f:selectItem itemValue="4" itemLabel="זקן" />
+					</h:selectOneMenu>
+
+					<h:outputText for="shortDesc" value="תיאור קצר:" class="find-lable" />
+					<h:inputTextarea id="shortDesc" type="text"
+						value="#{petMB.shortDesc}" class="add-select short-desc-field" />
+
+					<h:outputText for="detailDesc" value="תיאור מפורט:"
+						class="find-lable" />
+					<h:inputTextarea id="detailDesc" type="text"
+						value="#{petMB.detailDesc}" class="add-select detail-desc-field" />
+
+					<h:outputText for="img" value="תמונה:" class="find-lable" />
+					<h:inputFile id="img" value="#{petMB.imgPath}" />
+
+					<h:commandButton action="#{petMB.createPet()}" type="submit"
+						value="שמור" class="waves-effect waves-light btn search-bnt" />
+				</h:panelGrid>
+
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

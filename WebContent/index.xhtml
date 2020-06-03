@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html dir="rtl" lang="he" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!-- 	xmlns:p="http://primefaces.org/ui"> -->
+<ui:composition template="/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<!-- Page Layout -->
+			<div class="row flex">
+				<div class="searchbody">
+					<div class="container">
+						<h4 class="center">חיפוש חיה</h4>
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<h:outputLabel for="types" value="סוג:" class="find-lable" />
+							<h:selectOneMenu id="types" style="width:150px"
+								class="find-select">
+								<f:selectItem itemValue="1" itemLabel="כלב" />
+								<f:selectItem itemValue="2" itemLabel="חתול" />
+								<f:selectItem itemValue="3" itemLabel="ציפור" />
+								<f:selectItem itemValue="4" itemLabel="ארנב" />
+							</h:selectOneMenu>
+
+							<h:outputLabel for="age" value="גיל:" class="find-lable" />
+							<h:selectOneMenu id="age" effect="fold" style="width:150px"
+								class="find-select">
+								<f:selectItem itemValue="1" itemLabel="תינוק" />
+								<f:selectItem itemValue="2" itemLabel="צעיר" />
+								<f:selectItem itemValue="3" itemLabel="מבוגר" />
+								<f:selectItem itemValue="4" itemLabel="זקן" />
+							</h:selectOneMenu>
+
+							<!-- 							<h:outputLabel for="size" value="Size:" class="find-lable" /> -->
+							<!-- 							<p:selectCheckboxMenu id="size" effect="fold" style="width:150px" -->
+							<!-- 								class="find-select"> -->
+							<!-- 								<f:selectItem itemValue="1" itemLabel="Small" /> -->
+							<!-- 								<f:selectItem itemValue="2" itemLabel="Medium" /> -->
+							<!-- 								<f:selectItem itemValue="3" itemLabel="Large" /> -->
+							<!-- 								<f:selectItem itemValue="4" itemLabel="X-Large" /> -->
+							<!-- 							</p:selectCheckboxMenu> -->
+
+							<a class="waves-effect waves-light btn search-bnt" id="search">חפש</a>
+						</h:panelGrid>
+					</div>
+				</div>
+				<div class="col s12 m9 l9 cardbody">
+					<div class="container">
+						<div class="row">
+							<ui:repeat id="pet" var="pet" value="#{petMB.getAllPets()}">
+								<div class="column">
+									<div class="card-pet">
+										<div class="card-image">
+											<img id="pic" src="resources/img/no-image-available.jpg"
+												width="80%" />
+										</div>
+										<div class="card-text">
+											<span class="date">4 days ago</span>
+											<h2 id="name">#{pet.petName}</h2>
+											<p id="desc">#{pet.shortDesc}</p>
+										</div>
+										<div class="card-stats">
+											<div class="stat">
+												<div class="value">
+													4<sup>m</sup>
+												</div>
+												<div class="type">read</div>
+											</div>
+											<div class="stat border">
+												<div class="value">5123</div>
+												<div class="type">views</div>
+											</div>
+											<div class="stat">
+												<div class="value">32</div>
+												<div class="type">comments</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</ui:repeat>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
